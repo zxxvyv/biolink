@@ -1,207 +1,419 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>zxxvyv</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="gengar.ico">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div id="enter-screen">
-    <div id="enter-text">click to enter</div>
-</div>
-
-<div class="background">
-    <img src="background.gif" class="background-gif" alt="background">
-</div>
-
-<div class="card">
-
-    <div class="pfp">
-        <img src="pfp.gif" alt="pfp">
-    </div>
-
-    <div class="username">
-        <span class="username-text">zxxvyv</span>
-    </div>
-
-    <div class="description">
-        <span class="description-text">life is roblox</span>
-    </div>
-
-    <div class="social-buttons">
-        <a href="https://github.com/zxxvyv" target="_blank" aria-label="github">
-            <i class="fab fa-github"></i>
-        </a>
-
-        <a href="https://discord.com" target="_blank" aria-label="telegram">
-            <i class="fab fa-telegram"></i>
-        </a>
-
-        <a href="https://instagram.com" target="_blank" aria-label="insta">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-
-</div>
-
-<div class="card2">
-    <a href="https://www.youtube.com/@gothb0icl1qu3" class="mini-button" target="_blank" aria-label="youtube">
-        <i class="fab fa-youtube"></i>
-    </a>
-</div>
-
-<div class="card3">
-    <a href="https://www.tiktok.com/@084.marius" class="mini-button" target="_blank" aria-label="tiktok">
-        <i class="fab fa-tiktok"></i>
-    </a>   
-</div>
-
-<a href="https://discord.gg/6fCvDy4YfT" class="card4 big-button" target="_blank" aria-label="dc">
-    <img src="spin-haunter.gif" class="card-gif">
-    <span class="card-text">Best GeoGuessr Script</span>
-    <img src="spin-haunter.gif" class="card-gif">
-
-</a>
-
-<div class="card5">
-    <div class="discord-widget">
-        <div class="avatar-wrapper" style="position: relative; width: 80px; height: 80px;">
-            <img id="discord-avatar" src="" alt="avatar">
-            <span id="status-dot"></span>
-        </div>
-        <div class="discord-info">
-            <span id="status-text">Loading</span>
-        </div>
-    </div>
-</div>
-
-<div class="card6">
-  <div class="music-player">
-
-    <div class="track-left">
-      <span class="track-title">Vielleicht vielleicht</span>
-    </div>
-
-    <div class="track-right">
-      <button id="playBtn">
-        <i class="fa-solid fa-play"></i>
-      </button>
-    </div>
-
-    <audio id="audio">
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-  </div>
-</div>
-
-<script>
-const splash = document.getElementById('enter-screen');
-const splashText = document.getElementById('enter-text');
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const splash = document.getElementById("enter-screen");
-    const splashText = document.getElementById("enter-text");
-
-    const audio = document.getElementById("audio");
-    const playBtn = document.getElementById("playBtn");
-    const icon = playBtn.querySelector("i");
-
-    audio.volume = 0.5;
-
-    splash.addEventListener("click", () => {
-        splashText.style.opacity = "0";
-        splash.style.opacity = "0";
-
-        setTimeout(() => {
-            splash.style.display = "none";
-        }, 500);
-
-        audio.play();
-        icon.classList.replace("fa-play", "fa-pause");
-    });
-
-    playBtn.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play();
-            icon.classList.replace("fa-play", "fa-pause");
-        } else {
-            audio.pause();
-            icon.classList.replace("fa-pause", "fa-play");
-        }
-    });
-
-});
-
-function formatDuration(startTimestamp) {
-    const now = Date.now();
-    const elapsed = now - startTimestamp;
-    const seconds = Math.floor((elapsed / 1000) % 60);
-    const minutes = Math.floor((elapsed / 1000 / 60) % 60);
-    const hours = Math.floor(elapsed / 1000 / 60 / 60);
-
-    if (hours > 0) {
-        return `${hours}h ${minutes}m`;
-    } else if (minutes > 0) {
-        return `${minutes}m ${seconds}s`;
-    } else {
-        return `${seconds}s`;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter, sans-serif;
+    color: #fff;
 }
 
-const statusColors = {
-    online: 'green',
-    idle: 'orange',
-    dnd: 'red',
-    offline: 'gray'
-};
-
-async function fetchDiscordWidget() {
-    try {
-        const res = await fetch('https://api.lanyard.rest/v1/users/957071564300501042');
-        const data = await res.json();
-        const user = data.data;
-
-        document.getElementById('discord-avatar').src = user.discord_user.avatar='pfp.gif';
-
-        const status = user.discord_status;
-        document.getElementById('status-dot').style.backgroundColor = statusColors[status] || 'gray';
-
-        let text = '';
-        const game = user.activities.find(a => a.type === 0);
-        const spotify = user.activities.find(a => a.type === 2);
-
-        if (game) {
-            text = `playing \n ${game.name}`;
-            if (game.timestamps && game.timestamps.start) {
-            text += ` - ${formatDuration(game.timestamps.start)}`;
-        }   
-        } else if (spotify) {
-            text = `listening to \n ${spotify.details} - ${spotify.state}`;
-        } else {
-            text = status.charAt(0).toUpperCase() + status.slice(1);
-        }
-
-        document.getElementById('status-text').innerText = text;
-
-    } catch (err) {
-        document.getElementById('discord-avatar').src = 'pfp.gif';
-        document.getElementById('status-dot').style.backgroundColor = 'gray';
-        document.getElementById('status-text').innerText = 'Offline';
-        console.error(err);
-    }
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
-setInterval(fetchDiscordWidget, 15000);
-fetchDiscordWidget();
-</script>
+body {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-</body>
-</html>
+/* background */
 
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.background-gif {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: blur(6px);
+    transform: scale(1.05);
+}
+
+/* card thingys */
+
+.card {
+    position: absolute;
+    top: 250px;
+    width: 600px;
+    height: 350px;
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #ca9ce1;
+    display: flex;
+    justify-content: center;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+.card2 { /* top right */
+    position: absolute;
+    top: 615px;
+    right: 980px;
+    width: 295px;
+    height: 65px;
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #f4bbd37a;
+    display: flex;
+    justify-content: center;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+.card3 { /* top left */
+    position: absolute;
+    top: 615px;
+    right: 1295px;
+    width: 285px;
+    height: 65px;
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #f4bbd37a;
+    display: flex;
+    justify-content: center;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+.card4 { /* mid */
+    position: absolute;
+    top: 695px;
+    width: 600px;
+    height: 70px;
+    left: calc(50% - 300px);
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #f4bbd37a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 10px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+.card5 { /* discord card */
+    position: absolute;
+    top: 780px;
+    width: 600px;
+    height: 100px;
+    left: calc(50% - 300px);
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #f4bbd37a;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+.card6 { /* music control */
+    position: absolute;
+    top: 895px;
+    width: 600px;
+    height: 70px;
+    left: calc(50% - 300px);
+    background: #f4bbd37a;
+    border-radius: 16px;
+    border: 1px solid #f4bbd37a;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+/* banner*/
+
+.banner {
+    position: absolute;
+    top: 20px;
+    width: 370px;
+    height: 180px;
+    border-radius: 26px;
+    overflow: hidden;
+    opacity: 0.2;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* pfp */
+
+.pfp img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 220px;
+    right: 250px;
+    border-radius: 9999px;
+}
+
+/* username */
+
+.username {
+    position: absolute;
+    bottom: 175px;
+}
+
+.username-text {
+    font-size: 25px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+/* description */
+
+.description {
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+}
+
+.description-text {
+    font-size: 18px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+/* icon thingys */
+
+.social-buttons {
+    position: absolute;
+    bottom: 35px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-buttons a {
+    text-decoration: none;
+}
+    
+.social-buttons a i {
+    font-size: 30px;
+    color: #fe5da070;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    transform: scale(1.05);
+    color: #fe5da070;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.social-buttons a i:hover {
+    transform: scale(1.1);
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+/* top right youtube icon */
+.mini-button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 16px;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.mini-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 0 16px;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+    border-radius: 12px;
+}
+
+.mini-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.mini-button i {
+    font-size: 28px;
+    color: #fe5da070;
+    transition: transform 0.2s, color 0.2s, text-shadow 0.2s;
+}
+
+.mini-button:hover i {
+    transform: scale(1.08);
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.mini-button span {
+    font-size: 14px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+/* big button for dc*/
+
+.big-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    width: 600px;
+    height: 70px;
+
+    color: #222;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: background 0.2s, transform 0.15s;
+}
+
+.big-button:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+}
+
+/* discord status */
+.discord-widget {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.discord-widget img#discord-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+}
+
+#status-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: gray;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 2px solid #2c2c2c;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+.discord-info {
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+/* click to enter thingy */
+#enter-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+#enter-text {
+    font-size: 25px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+/* music player */
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.track-left {
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
+}
+
+.track-right button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    cursor: pointer;
+    box-shadow: 0 0 20px #fe5da070;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.track-right button i {
+    font-size: 20px;
+    color: #fe5da070;
+}
+
+.track-right button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #fe5da070;
+}
+
+/* spinning gifs text */
+.card-gif {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.card-text {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #000000;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
