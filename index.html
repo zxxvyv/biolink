@@ -48,11 +48,11 @@
     }
 
     .platform {
-      position: relative; /* wichtig für Banner */
+      position: relative;
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
       border-radius: 20px;
-      padding: 60px 30px 80px 30px; /* Profilbild weiter nach unten */
+      padding: 60px 30px 80px 30px;
       max-width: 400px;
       margin: 0 auto;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -62,10 +62,9 @@
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
-    /* Banner hinter Profilbild, blass/transparenz */
     .banner {
       position: absolute;
-      top: 10px; /* oben positioniert */
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
       width: 250px;
@@ -73,8 +72,8 @@
       background-size: cover;
       background-position: center;
       border-radius: 20px;
-      opacity: 0.4; /* Durchsichtig/Blass */
-      z-index: 0; /* hinter Profilbild */
+      opacity: 0.4;
+      z-index: 0;
     }
 
     .platform.fade-in {
@@ -84,12 +83,12 @@
 
     .pfp {
       position: relative;
-      z-index: 1; /* über Banner */
+      z-index: 1;
       width: 150px;
       height: 150px;
       border-radius: 50%;
       border: 3px solid rgba(255, 255, 255, 0.3);
-      margin-top: 40px; /* Profilbild weiter nach unten */
+      margin-top: 40px;
       margin-bottom: 20px;
       transition: transform 0.5s ease, border-color 0.5s ease;
     }
@@ -148,7 +147,6 @@
 
   <div id="content">
     <div class="platform">
-      <!-- Banner hier -->
       <div class="banner" id="banner"></div>
       
       <img class="pfp" src="pfp.jpg" alt="Profilbild" />
@@ -156,15 +154,15 @@
       <div class="links">
         <a href="https://instagram.com/084.marius" target="_blank">Instagram</a>
         <a href="https://www.tiktok.com/@084.marius" target="_blank">TikTok</a>
+        <a href="https://github.com/zxxvyv" target="_blank">Github</a>
         <a href="https://imgur.com/a/E0TgBz2" target="_blank">Goon Pic</a>
       </div>
     </div>
   </div>
 
   <script>
-    // Lokales Bannerbild auswählen
     const banner = document.getElementById('banner');
-    banner.style.backgroundImage = "url('banner.jpg')"; // Hier deine lokale Datei wählen
+    banner.style.backgroundImage = "url('banner.jpg')";
 
     function enterSite() {
       const enterScreen = document.getElementById('enter-screen');
@@ -188,3 +186,4 @@
   </script>
 </body>
 </html>
+
