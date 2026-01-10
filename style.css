@@ -1,0 +1,175 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  color: #fff;
+  padding: 0;
+
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0f0f 0%, #313131 50%, #303030 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 400px;
+    height: 450px;
+    border-radius: 26px;
+    background-color: rgba(41, 41, 41, 0.9);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 2px 6px rgba(255,255,255,0.05);
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+.card {
+    transition:
+        box-shadow 0.3s ease;
+        background-color: 0.3s ease;
+}
+
+.card-tilt {
+    perspective: 1000px;
+    height: 100%;
+    width: 100%;
+}
+
+.card-hitbox {
+    width: 450px;
+    height: 450px;
+}
+
+.card {
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.banner {
+    display: flex;
+    position: absolute;
+    margin-top: 20px;
+    width: 400px;
+    opacity: 0.2;
+    height: 180px;
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+.banner-img {
+    display: flex;
+    border-radius: 26px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.pfp img {
+    display: flex;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    bottom: -130px;
+    right: 0px;
+    border-radius: 9999px;
+    transition: 0.2s ease-in-out;
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+.username-text {
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: bold;
+}
+
+.username {
+    display: flex;
+    position: absolute;
+    left: 179px;
+    bottom: 190px;
+}
+
+.username-text,
+
+.description-text {
+    background: linear-gradient(to top left, #7C7C7C  0%, #CFCCCC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+.description {
+    display: flex;
+    position: absolute;
+    left: 165px;
+    bottom: 140px;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.description-text {
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+.social-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    padding: 15px 10px;
+    bottom: 30px;
+    gap: 15px;
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+.social-buttons a {
+    text-decoration: none;
+}
+
+.social-buttons a i {
+    font-size: 40px;
+    color: grey;
+    transition: 0.3s ease-in-out;
+}
+
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+/* FUCK YOU STOP LOOKING AT MY CSS */
+
+
+.social-buttons a i:hover {
+    transform: scale(1.1);
+    color: grey;
+    text-shadow: 0 0 10px #ffffff;
+}
