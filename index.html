@@ -1,189 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biolink</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { height: 100%; overflow: hidden; font-family: Arial, sans-serif; }
-
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: blur(10px);
-    }
-
-    #enter-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(15px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: white;
-      font-size: 2rem;
-      text-shadow: 0 0 10px black;
-      transition: opacity 0.5s ease;
-    }
-
-    #content {
-      display: none;
-      height: 100%;
-      width: 100%;
-      color: white;
-      text-align: center;
-      padding-top: 150px;
-      text-shadow: 0 0 10px black;
-    }
-
-    .platform {
-      position: relative;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 60px 30px 80px 30px;
-      max-width: 400px;
-      margin: 0 auto;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .banner {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 250px;
-      height: 100px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 20px;
-      opacity: 0.4;
-      z-index: 0;
-    }
-
-    .platform.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .pfp {
-      position: relative;
-      z-index: 1;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      margin-top: 40px;
-      margin-bottom: 20px;
-      transition: transform 0.5s ease, border-color 0.5s ease;
-    }
-
-    .pfp:hover {
-      transform: scale(1.05);
-      border-color: rgba(255, 255, 255, 0.6);
-    }
-
-    .links a {
-      display: block;
-      margin: 15px auto;
-      padding: 12px 20px;
-      width: 220px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      color: white;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .links a:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    h1 {
-      margin-bottom: 25px;
-      font-size: 2rem;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    h1.fade-in {
-      opacity: 1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zxxvyv</title>
+    <link rel="icon" type="image/x-icon" href="gengar.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-  <video id="bg-video" autoplay muted loop>
-    <source src="background.mp4" type="video/mp4" />
-  </video>
+<div class="card-hitbox">
+    <div class="card card-tilt">
+        
+        <div class="banner">
+            <img src="banner.jpg" alt="Banner" class="banner-img">
+        </div>
+        
+        <div class="pfp">
+            <img src="pfp.jpg" alt="pfp">
+        </div>
+        
+        <div class="username">
+            <h1 class="username-text">zxxvyv</h1>
+        </div>
+        
+        <div class="description">
+            <p class="description-text">Stupid Retard</p>
+        </div>
+        
+        <div class="social-buttons">
+            <a href="https://web.telegram.org/k/#@JudenVergaser88" target="_blank" aria-label="Telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+    
+            <a href="https://github.com/zxxvyv" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
 
-  <div id="bg-blur"></div>
+            <a href="https://steamcommunity.com/id/torkenraus" target="_blank" aria-label="Steam">
+                <i class="fab fa-steam"></i>
+            </a>
+</div>
 
-  <div id="enter-screen" onclick="enterSite()">
-    CLICK TO ENTER
-  </div>
 
-  <audio id="music" loop>
-    <source src="music.mp3" type="audio/mp3" />
-  </audio>
-
-  <div id="content">
-    <div class="platform">
-      <div class="banner" id="banner"></div>
-      
-      <img class="pfp" src="pfp.jpg" alt="Profilbild" />
-      <h1>m</h1>
-      <div class="links">
-        <a href="https://instagram.com/084.marius" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@084.marius" target="_blank">TikTok</a>
-        <a href="https://github.com/zxxvyv" target="_blank">Github</a>
-        <a href="https://imgur.com/a/E0TgBz2" target="_blank">Goon Pic</a>
-      </div>
     </div>
-  </div>
+</div>
 
-  <script>
-    const banner = document.getElementById('banner');
-    banner.style.backgroundImage = "url('banner.jpg')";
-
-    function enterSite() {
-      const enterScreen = document.getElementById('enter-screen');
-      enterScreen.style.opacity = '0';
-      
-      setTimeout(() => {
-        enterScreen.style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        
-        setTimeout(() => {
-          const platform = document.querySelector('.platform');
-          const heading = document.querySelector('h1');
-          
-          platform.classList.add('fade-in');
-          heading.classList.add('fade-in');
-        }, 50);
-        
-        document.getElementById('music').play();
-      }, 50);
-    }
-  </script>
 </body>
 </html>
-
