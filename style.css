@@ -244,37 +244,41 @@ body {
     transition: background 0.2s;
 }
 
-.mini-button:hover {
-    background: rgba(255, 255, 255, 0.12);
+.mini-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 0 16px;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
     border-radius: 12px;
 }
 
-.mini-button a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    height: 100%;
-    padding: 0 16px;
+.mini-button:hover {
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .mini-button i {
     font-size: 28px;
     color: #fe5da070;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.6));
-    transition: transform 0.2s;
-}
-
-.mini-button i:hover {
-    transform: scale(1.1);
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffffff;
+    transition: transform 0.2s, color 0.2s, text-shadow 0.2s;
 }
 
 .mini-button:hover i {
     transform: scale(1.08);
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.mini-button span {
+    font-size: 14px;
+    font-weight: 800;
+    text-shadow: 0 0 10px #fff;
+    letter-spacing: 0.5px;
 }
 
 /* big button for dc*/
