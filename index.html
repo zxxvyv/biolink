@@ -27,6 +27,8 @@
 <main class="layout">
 
     <div class="card profile-card">
+        <div class="view-counter" id="view-counter">0 views</div>
+        
         <div class="pfp">
             <img src="assets/pfp.gif" alt="pfp">
         </div>
@@ -91,6 +93,15 @@
 const splash = document.getElementById('enter-screen');
 const splashText = document.getElementById('enter-text');
 
+const statusColors = {
+    online: 'green',
+    idle: 'orange',
+    dnd: 'red',
+    offline: 'gray'
+};
+
+const API_URL = "https://view-api-seven.vercel.app/";
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById("enter-screen");
@@ -142,13 +153,6 @@ function formatDuration(startTimestamp) {
     }
 }
 
-const statusColors = {
-    online: 'green',
-    idle: 'orange',
-    dnd: 'red',
-    offline: 'gray'
-};
-
 async function fetchDiscordWidget() {
     try {
         const res = await fetch('https://api.lanyard.rest/v1/users/957071564300501042');
@@ -187,11 +191,26 @@ async function fetchDiscordWidget() {
 
 setInterval(fetchDiscordWidget, 15000);
 fetchDiscordWidget();
+
+async function updateViewCounter() {
+    try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        document.getElementById("view-counter").innerText = `${data.views} views`;
+    } catch (err) {
+        console.error("Error fetching views:", err);
+        document.getElementById("view-counter").innerText = `N/A`;
+    }
+}
+
+updateViewCounter();
+setInterval(updateViewCounter, 15000);
 </script>
 
 </body>
 
 </html>
+
 
 
 
