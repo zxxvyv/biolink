@@ -293,7 +293,7 @@ body {
     }
 
     .layout {
-        padding-top: 30px;
+        padding-top: 10px;
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 40px;
@@ -307,3 +307,4 @@ body {
     justify-content: center;
 
 }
+
