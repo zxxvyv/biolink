@@ -99,8 +99,6 @@ const statusColors = {
     offline: 'gray'
 };
 
-const API_URL = "https://view-api-seven.vercel.app/api/view";
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById("enter-screen");
@@ -190,25 +188,12 @@ async function fetchDiscordWidget() {
 
 setInterval(fetchDiscordWidget, 15000);
 fetchDiscordWidget();
-
-async function updateViewCounter() {
-    try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
-        document.getElementById("view-counter").innerText = `${data.views} views`;
-    } catch (err) {
-        console.error("Error fetching views:", err);
-        document.getElementById("view-counter").innerText = `N/A`;
-    }
-}
-
-updateViewCounter();
-setInterval(updateViewCounter, 15000);
 </script>
 
 </body>
 
 </html>
+
 
 
 
